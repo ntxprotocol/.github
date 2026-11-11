@@ -1,37 +1,70 @@
-# NTX — Network Text Exchange
+<!-- markdownlint-disable-file MD013 MD033 MD041 -- centred logo and badge links in HTML -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ntx-lockup-reverse.svg">
+    <img src="assets/ntx-lockup.svg" alt="NTX — Network Text Exchange" height="64">
+  </picture>
+</p>
 
-**An open protocol for sending text, not video, between apps on a local network.**
+<p align="center">
+  <strong>An open protocol for sending text, not video, between apps on a local network.</strong>
+</p>
 
-Think of it as NDI, but for text. One app (a lyrics app, a scripture detector, a scoreboard…)
-sends text. Other apps (presentation software, video mixers, streaming tools…) receive it and
-show it with **their own templates and styling**.
+<p align="center">
+  <a href="https://github.com/ntxprotocol/spec"><img alt="Spec: NTX 0.1 Pre-Draft" src="https://img.shields.io/badge/spec-0.1%20pre--draft-0B7A72"></a>
+  <a href="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml"><img alt="Core CI" src="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/ntxprotocol/.github/blob/main/CODE_STANDARDS.md"><img alt="Coverage at least 90%" src="https://img.shields.io/badge/coverage-%E2%89%A590%25-0B7A72"></a>
+  <a href="https://github.com/ntxprotocol/.github/blob/main/CONTRIBUTING.md"><img alt="Contributions welcome" src="https://img.shields.io/badge/contributions-welcome-0B7A72"></a>
+</p>
 
-> **Status: early.** The specification is NTX 0.1 Pre-Draft. Everything may still change.
+## What is NTX?
+
+Think of it as **NDI, but for text**. One app sends text (a lyrics app, a scripture detector, a
+scoreboard, a caption tool). Other apps receive it (presentation software, video mixers,
+streaming tools) and show it with **their own templates and styling**, exactly as if someone had
+typed it in.
+
+```json
+{ "op": "update", "channel": "program", "seq": 42, "type": "ntx.text",
+  "fields": { "text": "Amazing grace, how sweet the sound" } }
+```
+
+- **Text, not pictures of text.** Fonts, layouts and transitions stay in the receiving app.
+- **Use-case neutral.** Any JSON fields; shared types such as `ntx.text` keep strangers' apps compatible.
+- **Live-ready.** Full state on connect, ordered updates, on-air tally, automatic reconnect.
+- **Finds itself.** mDNS discovery on the local network, with a manual address when needed.
+- **Open.** An open specification with a royalty-free patent commitment, and permissive code.
 
 ## Repositories
 
-| Repo | What it is | Status |
+| Repository | What it is | Status |
 | --- | --- | --- |
-| [spec](https://github.com/ntxprotocol/spec) | The specification, JSON Schemas, and examples | Pre-Draft (0.1) |
-| `ntx` | Rust core, C ABI, and language wrappers | Planned |
-| `client` | Monitor app, web playground, and bridges | Planned |
+| [**spec**](https://github.com/ntxprotocol/spec) | The specification, JSON Schemas and examples | 0.1 Pre-Draft |
+| [**ntx**](https://github.com/ntxprotocol/ntx) | Rust core library, C library (`ntx.h`) and the `ntx` test tool | In progress |
+| `client` | Monitor app, web playground and bridges (vMix, files, OSC) | Planned |
+| Language bindings | Python, Node, Java and .NET on top of the C library | Planned |
 | `obs-ntx` | OBS Studio plugin | Planned |
-| `ntx-web` | TypeScript browser SDK | Planned |
-| `conformance` | Conformance test suite | Planned |
-| `brand` | Name and logo files | Planned |
+| `ntx-web` | TypeScript SDK for web pages | Planned |
+| `conformance` | Conformance test suite behind "NTX compatible" | Planned |
 
 ## Get involved
 
-- Read the [spec](https://github.com/ntxprotocol/spec) and tell us what your app needs.
-- Questions and ideas: open an issue in the repo it relates to. See [SUPPORT.md](../SUPPORT.md).
-- Changes: see [CONTRIBUTING.md](../CONTRIBUTING.md). Contributions need a DCO sign-off (`git commit -s`).
-- Be kind: [Code of Conduct](../CODE_OF_CONDUCT.md).
+- **Read the [spec](https://github.com/ntxprotocol/spec)** and tell us what your app needs.
+- **Building a presentation, broadcast or streaming app?** Open an issue: we want to hear from you early.
+- **Questions:** see [SUPPORT.md](https://github.com/ntxprotocol/.github/blob/main/SUPPORT.md).
+- **Contributing:** see [CONTRIBUTING.md](https://github.com/ntxprotocol/.github/blob/main/CONTRIBUTING.md)
+  and the [code standards](https://github.com/ntxprotocol/.github/blob/main/CODE_STANDARDS.md).
+  Every commit needs a DCO sign-off (`git commit -s`).
+- **Security:** see [SECURITY.md](https://github.com/ntxprotocol/.github/blob/main/SECURITY.md).
+- **Be kind:** [Code of Conduct](https://github.com/ntxprotocol/.github/blob/main/CODE_OF_CONDUCT.md).
 
 ## Licences
 
-- Code repositories: **MIT OR Apache-2.0**.
-- OBS plugin (`obs-ntx`): **GPL-2.0-or-later**.
-- Specification: **Community Specification License 1.0**.
-- Type files: **CC0**.
+| What | Licence |
+| --- | --- |
+| Specification | Community Specification License 1.0 (royalty-free patent commitment) |
+| Code | MIT OR Apache-2.0 (the OBS plugin will be GPL-2.0-or-later) |
+| Shared type files and examples | CC0 1.0 |
+| The NTX name and logo | Trademarks: see the [trademark policy](https://github.com/ntxprotocol/.github/blob/main/TRADEMARKS.md) |
 
-Copyright © 2026 CamelCase Technologies Ltd and the NTX contributors.
+<sub>Copyright © 2026 CamelCase Technologies Ltd and the NTX contributors.</sub>
