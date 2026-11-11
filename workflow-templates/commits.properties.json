@@ -1,0 +1,6 @@
+{
+  "name": "NTX commit checks",
+  "description": "Checks that every commit in a pull request is signed off (DCO) and follows Conventional Commits.",
+  "iconName": "octicon git-commit",
+  "categories": ["Utilities"]
+}

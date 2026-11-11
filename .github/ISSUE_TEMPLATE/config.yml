@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security problem
+    url: https://github.com/ntxprotocol/.github/security/advisories/new
+    about: Please report security problems privately, not as a public issue. Or email security@ntxprotocol.com.
+  - name: Protocol change proposal
+    url: https://github.com/ntxprotocol/spec/issues/new
+    about: Changes to the protocol are proposed in the spec repository.
+  - name: Code of Conduct problem
+    url: mailto:conduct@ntxprotocol.com
+    about: Email conduct@ntxprotocol.com.

@@ -1,0 +1,9 @@
+{
+  // Markdown style. The Contributor Covenant text is kept verbatim and not linted.
+  "config": {
+    "default": true,
+    "MD013": { "line_length": 110, "tables": false, "code_blocks": false },
+    "MD024": { "siblings_only": true }
+  },
+  "ignores": ["CODE_OF_CONDUCT.md"]
+}
