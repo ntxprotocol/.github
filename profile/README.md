@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://github.com/ntxprotocol/spec"><img alt="Spec: NTX 0.1 Pre-Draft" src="https://img.shields.io/badge/spec-0.1%20pre--draft-0B7A72"></a>
   <a href="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml"><img alt="Core CI" src="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml/badge.svg"></a>
-  <a href="https://github.com/ntxprotocol/.github/blob/main/CODE_STANDARDS.md"><img alt="Coverage at least 90%" src="https://img.shields.io/badge/coverage-%E2%89%A590%25-0B7A72"></a>
+  <a href="https://github.com/ntxprotocol/.github/blob/main/CODE_STANDARDS.md"><img alt="Coverage target at least 90%" src="https://img.shields.io/badge/coverage%20target-%E2%89%A590%25-0B7A72"></a>
   <a href="https://github.com/ntxprotocol/.github/blob/main/CONTRIBUTING.md"><img alt="Contributions welcome" src="https://img.shields.io/badge/contributions-welcome-0B7A72"></a>
 </p>
 
@@ -35,17 +35,44 @@ typed it in.
 - **Finds itself.** mDNS discovery on the local network, with a manual address when needed.
 - **Open.** An open specification with a royalty-free patent commitment, and permissive code.
 
+### Words you will meet
+
+| Word | Meaning |
+| --- | --- |
+| **Source** | The app that sends text (for example a lyrics or scripture app). |
+| **Receiver** | The app that shows it (presentation software, OBS, vMix…). |
+| **Channel** | `program` is what is on air now; `preview` is what comes next. |
+| **Tally** | The receiver telling the source "your text is on air". |
+| **Publisher / relay** | A web page sends through a relay app on its own computer, which serves it as a source. |
+| **Binding** | Wiring a receiver's text box to a field such as `text` or `{reference} · {version}`. |
+
+## Try it
+
+Install [Rust](https://rustup.rs), then send text from one terminal and receive it in another:
+
+```bash
+git clone https://github.com/ntxprotocol/ntx && cd ntx
+cargo run -p ntx-cli -- send --name Test          # type lines and press Enter
+cargo run -p ntx-cli -- recv 127.0.0.1 --field text   # in a second terminal
+```
+
+On two computers, run `cargo run -p ntx-cli -- list` to find the sender's address. More in the
+[ntx README](https://github.com/ntxprotocol/ntx#try-it).
+
 ## Repositories
 
 | Repository | What it is | Status |
 | --- | --- | --- |
 | [**spec**](https://github.com/ntxprotocol/spec) | The specification, JSON Schemas and examples | 0.1 Pre-Draft |
-| [**ntx**](https://github.com/ntxprotocol/ntx) | Rust core library, C library (`ntx.h`) and the `ntx` test tool | In progress |
-| `client` | Monitor app, web playground and bridges (vMix, files, OSC) | Planned |
-| Language bindings | Python, Node, Java and .NET on top of the C library | Planned |
-| `obs-ntx` | OBS Studio plugin | Planned |
-| `ntx-web` | TypeScript SDK for web pages | Planned |
-| `conformance` | Conformance test suite behind "NTX compatible" | Planned |
+| [**ntx**](https://github.com/ntxprotocol/ntx) | Rust core library, C library (`ntx.h`) and the `ntx` test tool | Early development |
+| Python bindings | `pip install ntx-protocol`, import `ntxprotocol` (in the ntx repo) | In review |
+| `client` | Desktop app: monitor, playground, custom types and bridges (FreeShow, OBS, vMix, files, OSC) | Early development, not public yet |
+| `ntx-web` | TypeScript SDK for web pages (`@ntxprotocol/web`) | Early development, not public yet |
+| `conformance` | Conformance test suite behind "NTX compatible" | Early development, not public yet |
+| Node, Java and .NET bindings | On top of the C library | Planned |
+| `obs-ntx` | Native OBS Studio plugin | Planned |
+
+Nothing is published to crates.io, PyPI or npm yet.
 
 ## Get involved
 
@@ -63,7 +90,7 @@ typed it in.
 | What | Licence |
 | --- | --- |
 | Specification | Community Specification License 1.0 (royalty-free patent commitment) |
-| Code | MIT OR Apache-2.0 (the OBS plugin will be GPL-2.0-or-later) |
+| Code | MIT OR Apache-2.0 (scripts in the spec repository: MIT; the OBS plugin will be GPL-2.0-or-later) |
 | Shared type files and examples | CC0 1.0 |
 | The NTX name and logo | Trademarks: see the [trademark policy](https://github.com/ntxprotocol/.github/blob/main/TRADEMARKS.md) |
 
