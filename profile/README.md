@@ -19,8 +19,9 @@
 
 ## What is NTX?
 
-Think of it as **NDI, but for text**. One app sends text (a lyrics app, a scripture detector, a
-scoreboard, a caption tool). Other apps receive it (presentation software, video mixers,
+Think of it as **NDI, but for text** (NDI is a common way to send live video between apps on a
+network). One app sends text (a lyrics app, a scripture detector, a scoreboard, a caption tool).
+Other apps receive it (presentation software, video mixers,
 streaming tools) and show it with **their own templates and styling**, exactly as if someone had
 typed it in.
 
@@ -32,7 +33,8 @@ typed it in.
 - **Text, not pictures of text.** Fonts, layouts and transitions stay in the receiving app.
 - **Use-case neutral.** Any JSON fields; shared types such as `ntx.text` keep strangers' apps compatible.
 - **Live-ready.** Full state on connect, ordered updates, on-air tally, automatic reconnect.
-- **Finds itself.** mDNS discovery on the local network, with a manual address when needed.
+- **Finds itself.** mDNS (automatic discovery on the local network) finds sources, with a manual
+  address when needed.
 - **Open.** An open specification with a royalty-free patent commitment, and permissive code.
 
 ### Words you will meet
@@ -65,14 +67,13 @@ On two computers, run `cargo run -p ntx-cli -- list` to find the sender's addres
 | --- | --- | --- |
 | [**spec**](https://github.com/ntxprotocol/spec) | The specification, JSON Schemas and examples | 0.1 Pre-Draft |
 | [**ntx**](https://github.com/ntxprotocol/ntx) | Rust core library, C library (`ntx.h`) and the `ntx` test tool | Early development |
-| Python bindings | `pip install ntx-protocol`, import `ntxprotocol` (in the ntx repo) | In review |
 | `client` | Desktop app: monitor, playground, custom types and bridges (FreeShow, OBS, vMix, files, OSC) | Early development, not public yet |
 | `ntx-web` | TypeScript SDK for web pages (`@ntxprotocol/web`) | Early development, not public yet |
 | `conformance` | Conformance test suite behind "NTX compatible" | Early development, not public yet |
-| Node, Java and .NET bindings | On top of the C library | Planned |
+| `ntx-python`, `ntx-node`, `ntx-dotnet`, `ntx-java` | Python, Node.js, .NET and Java SDKs on the core library | Early development, not public yet |
 | `obs-ntx` | Native OBS Studio plugin | Planned |
 
-Nothing is published to crates.io, PyPI or npm yet.
+Nothing is published to crates.io, PyPI, npm, NuGet or Maven Central yet.
 
 ## Get involved
 

@@ -11,7 +11,8 @@ policy keeps the names meaningful.
 - Use "NTX" and the logo to refer to the protocol, for example "supports the NTX protocol" or "an
   NTX library".
 - Write about NTX in articles, talks, and documentation.
-- Use the logo files from the `brand` repository without changing them.
+- Use the logo files in the [`assets`](https://github.com/ntxprotocol/ntx/tree/main/assets) folder of
+  the `ntx` repository without changing them.
 
 ## "NTX compatible"
 

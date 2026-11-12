@@ -30,7 +30,8 @@ that does not pass them is not merged.
 | Rust | [Rust API Guidelines](https://rust-lang.github.io/api-guidelines/) | `rustfmt`, `clippy` (pedantic, warnings are errors), `cargo-machete` |
 | TypeScript | [Google TypeScript Style](https://google.github.io/styleguide/tsguide.html) | `eslint` (strict type-checked), `prettier`, `tsc --strict` |
 | Python | [PEP 8](https://peps.python.org/pep-0008/) + type hints | `ruff`, `mypy --strict` |
-| C / C++ | [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/) | `clang-format`, `clang-tidy` |
+| C# | [.NET coding conventions](https://learn.microsoft.com/dotnet/csharp/fundamentals/coding-style/coding-conventions) | `dotnet format`, analyzers (`latest-recommended`), nullable, warnings are errors |
+| Java | [Google Java Style](https://google.github.io/styleguide/javaguide.html) | Spotless (google-java-format), `javac -Xlint:all -Werror`, doclint |
 | Commits | [Conventional Commits](https://www.conventionalcommits.org/) + DCO sign-off | `commit-msg` hook, CI |
 | Versions | [Semantic Versioning](https://semver.org/), [Keep a Changelog](https://keepachangelog.com/) | review |
 
@@ -42,13 +43,12 @@ that does not pass them is not merged.
   output. They live in each repository's `tests/` folder and run with the normal test command, so
   they can be rerun at any time.
 - Tests are deterministic. No sleeps for timing when an event can be awaited; no internet access.
-- Protocol behaviour is checked against the spec's examples and, once it exists, the conformance
-  suite.
+- Protocol behaviour is checked against the spec's examples and the conformance suite.
 
 ## Security
 
-- Dependencies: licences and advisories are checked (`cargo-deny` for Rust, `npm audit` /
-  `pip-audit` elsewhere). Only permissive licences in libraries.
+- Dependencies: licences and advisories are checked (`cargo-deny` for Rust, including the
+  Rust parts of the SDKs, and `npm audit` for npm). Only permissive licences in libraries.
 - No secrets in the repository. `gitleaks` runs before every commit.
 - `unsafe` Rust is forbidden except in the C ABI crate, where every block has a `// SAFETY:` comment.
 - Treat all received network data as untrusted (spec clause 20).

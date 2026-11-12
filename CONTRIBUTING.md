@@ -43,8 +43,8 @@ Implementations follow the spec, not the other way round.
 
 ## Conformance tests
 
-Once the conformance suite exists, a change that affects protocol behaviour must pass it before
-merge. New behaviour needs a new conformance test.
+A change that affects protocol behaviour must pass the conformance suite (`ntx-conformance`)
+before merge. New behaviour needs a new conformance test.
 
 ## Keep NTX use-case neutral
 
