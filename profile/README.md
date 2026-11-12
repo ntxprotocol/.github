@@ -12,7 +12,8 @@
 
 <p align="center">
   <a href="https://github.com/ntxprotocol/spec"><img alt="Spec: NTX 0.1 Pre-Draft" src="https://img.shields.io/badge/spec-0.1%20pre--draft-0B7A72"></a>
-  <a href="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml"><img alt="Core CI" src="https://github.com/ntxprotocol/ntx/actions/workflows/ci.yml/badge.svg"></a>
+  <img alt="Status: early development" src="https://img.shields.io/badge/status-early%20development-0B7A72">
+  <img alt="SDKs: Rust, C, Python, Node.js, TypeScript, .NET, Java" src="https://img.shields.io/badge/SDKs-Rust%20%C2%B7%20C%20%C2%B7%20Python%20%C2%B7%20Node.js%20%C2%B7%20TypeScript%20%C2%B7%20.NET%20%C2%B7%20Java-0B7A72">
   <a href="https://github.com/ntxprotocol/.github/blob/main/CODE_STANDARDS.md"><img alt="Coverage target at least 90%" src="https://img.shields.io/badge/coverage%20target-%E2%89%A590%25-0B7A72"></a>
   <a href="https://github.com/ntxprotocol/.github/blob/main/CONTRIBUTING.md"><img alt="Contributions welcome" src="https://img.shields.io/badge/contributions-welcome-0B7A72"></a>
 </p>
@@ -21,9 +22,8 @@
 
 Think of it as **NDI, but for text** (NDI is a common way to send live video between apps on a
 network). One app sends text (a lyrics app, a scripture detector, a scoreboard, a caption tool).
-Other apps receive it (presentation software, video mixers,
-streaming tools) and show it with **their own templates and styling**, exactly as if someone had
-typed it in.
+Other apps receive it (presentation software, video mixers, streaming tools) and show it with
+**their own templates and styling**, exactly as if someone had typed it in.
 
 ```json
 { "op": "update", "channel": "program", "seq": 42, "type": "ntx.text",
@@ -35,6 +35,8 @@ typed it in.
 - **Live-ready.** Full state on connect, ordered updates, on-air tally, automatic reconnect.
 - **Finds itself.** mDNS (automatic discovery on the local network) finds sources, with a manual
   address when needed.
+- **Safe by default.** Optional pairing codes; web pages from the internet cannot read or send text
+  unless the user allows them.
 - **Open.** An open specification with a royalty-free patent commitment, and permissive code.
 
 ### Words you will meet
@@ -61,19 +63,26 @@ cargo run -p ntx-cli -- recv 127.0.0.1 --field text   # in a second terminal
 On two computers, run `cargo run -p ntx-cli -- list` to find the sender's address. More in the
 [ntx README](https://github.com/ntxprotocol/ntx#try-it).
 
-## Repositories
+## Repositories and packages
 
-| Repository | What it is | Status |
-| --- | --- | --- |
-| [**spec**](https://github.com/ntxprotocol/spec) | The specification, JSON Schemas and examples | 0.1 Pre-Draft |
-| [**ntx**](https://github.com/ntxprotocol/ntx) | Rust core library, C library (`ntx.h`) and the `ntx` test tool | Early development |
-| `client` | Desktop app: monitor, playground, custom types and bridges (FreeShow, OBS, vMix, files, OSC) | Early development, not public yet |
-| `ntx-web` | TypeScript SDK for web pages (`@ntxprotocol/web`) | Early development, not public yet |
-| `conformance` | Conformance test suite behind "NTX compatible" | Early development, not public yet |
-| `ntx-python`, `ntx-node`, `ntx-dotnet`, `ntx-java` | Python, Node.js, .NET and Java SDKs on the core library | Early development, not public yet |
-| `obs-ntx` | Native OBS Studio plugin | Planned |
+| Use NTX from | Repository | Package | Status |
+| --- | --- | --- | --- |
+| The protocol itself | [**spec**](https://github.com/ntxprotocol/spec) | Specification, JSON Schemas and examples | 0.1 Pre-Draft |
+| Rust | [**ntx**](https://github.com/ntxprotocol/ntx) | crate `ntx` | Early development |
+| C and C++ | [**ntx**](https://github.com/ntxprotocol/ntx/tree/main/crates/ntx-ffi) | crate `ntx-ffi`: library `libntx_ffi` and header `ntx.h` | Early development |
+| The command line | [**ntx**](https://github.com/ntxprotocol/ntx/tree/main/crates/ntx-cli) | crate `ntx-cli`: the `ntx` test tool (send, receive, list, publish, relay) | Early development |
+| Python 3.11+ | [ntx-python](https://github.com/ntxprotocol/ntx-python) | PyPI `ntx-protocol` (`import ntxprotocol`) | Not public yet |
+| Node.js 22+ | [ntx-node](https://github.com/ntxprotocol/ntx-node) | npm `@ntxprotocol/ntx` | Not public yet |
+| Web pages (TypeScript) | [ntx-web](https://github.com/ntxprotocol/ntx-web) | npm `@ntxprotocol/web` | Not public yet |
+| .NET 8 and 10 | [ntx-dotnet](https://github.com/ntxprotocol/ntx-dotnet) | NuGet `Ntx` | Not public yet |
+| Java 22+ | [ntx-java](https://github.com/ntxprotocol/ntx-java) | Maven `com.ntxprotocol:ntx` | Not public yet |
+| A desktop app | [client](https://github.com/ntxprotocol/client) | NTX Client: monitor sources, test sending, and bridge text into FreeShow, OBS Studio, vMix, files and OSC | Not public yet |
+| Testing your app | [conformance](https://github.com/ntxprotocol/conformance) | `ntx-conformance`: checks a source, receiver, publisher or relay against the spec; behind "NTX compatible" | Not public yet |
+| OBS Studio | `obs-ntx` | Native OBS plugin | Planned |
 
-Nothing is published to crates.io, PyPI, npm, NuGet or Maven Central yet.
+- **Repositories "not public yet":** only members of the organisation can open them for now.
+- **Packages:** none is on crates.io, PyPI, npm, NuGet or Maven Central yet. Until they are, build
+  from source as each README explains.
 
 ## Get involved
 
